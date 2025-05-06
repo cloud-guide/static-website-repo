@@ -1,0 +1,11 @@
+steps:
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+        gsutil -m cp -r . gs://static-site-bucket
+        gsutil -m acl ch -r -u AllUsers:R gs://static-site-bucket
+
+# Optional: specify a timeout
+timeout: "300s"
